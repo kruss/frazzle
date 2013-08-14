@@ -1,0 +1,19 @@
+require "frazzle/frazzle"
+
+class PizzaFactory
+
+  def initialize()
+    puts "This is the pizza factory"
+    @registry = Frazzle::Registry.new("pizza")
+  end
+
+  def run()
+    pizzas = [ "Margerita", "Fungi", "Scampi" ]
+    plugins = @registry.get_plugins("oven")
+    plugins.each do |plugin|
+      oven = @registry.load_plugin(plugin).create({ :pizza_type => pizzas.pop })
+      oven.make_pizza()
+    end
+  end
+
+end

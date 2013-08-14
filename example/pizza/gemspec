@@ -1,0 +1,12 @@
+spec = Gem::Specification.new do |s|
+  s.name = "pizza"
+  s.version = "0.1.0"
+  s.author = "Kevin russ"
+  s.email = "kevin.russ@esrlabs.com"
+  s.platform = Gem::Platform::RUBY
+  s.summary = "pizza example"
+  s.files = FileList["lib/**/*.rb"].to_a
+  s.require_path = "lib"
+  s.has_rdoc = false
+  s.executables = ["pizza"]
+end
