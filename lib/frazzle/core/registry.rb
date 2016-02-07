@@ -18,6 +18,16 @@ module Frazzle
 # ******************************************************************************************************
 class Registry
 
+  class Plugin
+    def initialize(registry, name)
+      @registry = registry
+      @name = name
+    end
+    def load(context=Object.new)
+      @registry.load_plugin(@name, context)
+    end
+  end
+
   def initialize(base_name, base_separator='-', plugin_separator='-')
     @base_name = base_name
     @base_separator = base_separator
@@ -25,10 +35,18 @@ class Registry
   end
   attr_accessor :base_name
 
+  def plugins(plugin_type)
+    get_plugins(plugin_type).map{|name|Plugin.new(self, name)}
+  end
+
   def get_plugins(plugin_type)
     get_names(get_plugin_gems(plugin_type))
   end
 
+
+  def all_plugin
+    get_all_plugins.map{|name|Plugin.new(self, name)}
+  end
 
   def get_all_plugins
     get_names(find_gems do |spec|

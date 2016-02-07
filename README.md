@@ -40,8 +40,3 @@ conventions hardcoded.
       `application_plugin_type`. The seapator between application,
       plugin and type can be configured.
 2. Frazzle always instance-evals the file lib/gemname/plugin.rb.
-
-## Todo
-- returning plugin objects instead of string from the search functions
-  of registry.
-  

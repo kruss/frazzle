@@ -9,9 +9,9 @@ class PizzaFactory
 
   def run()
     pizzas = [ "Margerita", "Fungi", "Scampi" ]
-    plugins = @registry.get_plugins("oven")
+    plugins = @registry.plugins("oven")
     plugins.each do |plugin|
-      oven = @registry.load_plugin(plugin).create({ :pizza_type => pizzas.pop })
+      oven = plugin.load.create({ :pizza_type => pizzas.pop })
       oven.make_pizza()
     end
   end
