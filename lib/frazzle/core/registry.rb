@@ -19,6 +19,7 @@ module Frazzle
 class Registry
 
   class Plugin
+    attr_reader :name
     def initialize(registry, name)
       @registry = registry
       @name = name
